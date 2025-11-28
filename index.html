@@ -7,31 +7,68 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- ---------- STICKY TOPBAR ---------- -->
-  <header class="topbar" id="topbar">
-    <div class="logo">TikTok Save <span>by Ivan</span></div>
-    <div class="topbar-right">
-      <nav class="tabs">
-        <button data-section="hero" class="active" data-text="nav_downloader">Downloader</button>
-        <button data-section="fitur" data-text="nav_fitur">Fitur</button>
-        <button data-section="cara" data-text="nav_howto">Cara Pakai</button>
-        <button data-section="faq" data-text="nav_faq">FAQ</button>
-      </nav>
+  <!-- ---------- STICKY NAVBAR ---------- -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-left">
+      <div class="logo">TikTok Save <span>by Ivan</span></div>
+    </div>
+    <div class="nav-center">
+      <a href="#hero" class="nav-link active" data-text="nav_downloader">Downloader</a>
+      <a href="#fitur" class="nav-link" data-text="nav_fitur">Fitur</a>
+      <a href="#cara" class="nav-link" data-text="nav_howto">Cara Pakai</a>
+      <a href="#faq" class="nav-link" data-text="nav_faq">FAQ</a>
+    </div>
+    <div class="nav-right">
       <div class="lang-switch">
         <button data-lang="id" class="active">ID</button>
         <button data-lang="en">EN</button>
       </div>
     </div>
-  </header>
+  </nav>
 
-  <!-- ---------- HERO SECTION (DOWNLOADER) ---------- -->
-  <section id="hero" class="section active">
+  <!-- ---------- HERO / DOWNLOADER ---------- -->
+  <section id="hero" class="section">
     <div class="container hero-inner">
       <h1 data-text="hero_h1">TikTok Save by Ivan</h1>
-      <p class="sub" data-text="hero_sub">Tanpa watermark • Cepat • Gratis</p>
+      <p class="sub" data-text="hero_sub">Tanpa watermark · Cepat · Gratis</p>
+
       <input id="input-url" type="text" data-placeholder="input_placeholder" placeholder="Tempel tautan TikTok di sini...">
+
+      <!-- Pilihan resolusi -->
+      <div class="res-wrapper">
+        <label class="res-label">
+          <input type="radio" name="res" value="720" checked>
+          <span>720p</span>
+        </label>
+        <label class="res-label">
+          <input type="radio" name="res" value="1080">
+          <span>1080p</span>
+        </label>
+      </div>
+
       <button id="download-btn" data-text="download_btn">Unduh Video</button>
       <p id="status"></p>
+    </div>
+  </section>
+
+  <!-- ---------- BLOCK DESKRIPSI PANJANG ---------- -->
+  <section class="section">
+    <div class="container">
+      <h2 data-text="desc_h2">Mengapa Anda mengunduh video & foto TikTok dengan TikTok Save?</h2>
+      <p data-text="desc_p1">
+        Karena dengan TikTok Save memungkinkan Anda mengunduh video dari TikTok tanpa logo, tanpa watermark.
+        Simpan dan unduh video TikTok di peramban web, tidak perlu menginstal perangkat lunak atau ekstensi apa pun.
+      </p>
+      <p data-text="desc_p2">
+        TikTok Save Downloader tidak menyimpan video, juga tidak menyimpan salinan video yang telah diunduh.
+        Semua video tersimpan di server TikTok. Selain itu, alat ini tidak mengumpulkan data atau melacak riwayat unduhan pengguna.
+        Itulah mengapa menggunakan Save TikTok sepenuhnya anonim.
+      </p>
+      <p data-text="desc_p3">
+        Dengan TikTok Save, alat ini akan membantu Anda mengunduh setiap gambar atau video TikTok ke perangkat Anda dengan mudah dan cepat.
+        Kami akan terus meningkatkan perangkat lunak untuk memberikan pengalaman pengguna terbaik!
+        Silakan bagikan alat ini dengan teman dan kerabat untuk digunakan. Terima kasih!
+      </p>
     </div>
   </section>
 
@@ -74,7 +111,7 @@
         </div>
         <div class="step">
           <span class="num">3</span>
-          <p><strong data-text="cara_3_t">Klik Unduh</strong> – <span data-text="cara_3_d">Tunggu 2 detik, video akan terunduh otomatis.</span></p>
+          <p><strong data-text="cara_3_t">Pilih Resolusi & Unduh</strong> – <span data-text="cara_3_d">Pilih 720p/1080p lalu klik Unduh.</span></p>
         </div>
       </div>
     </div>
