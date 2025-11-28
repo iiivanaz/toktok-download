@@ -1,4 +1,4 @@
-/* ======== i18n (tambahkan key baru di bawah) ======== */
+/* ======== i18n baru (tambahkan key baru) ======== */
 const i18n = {
   id: {
     nav_downloader: "Downloader",
@@ -6,9 +6,16 @@ const i18n = {
     nav_howto: "Cara Pakai",
     nav_faq: "FAQ",
     hero_h1: "TikTok Save by Ivan",
-    hero_sub: "Tanpa watermark • Cepat • Gratis",
+    hero_sub: "Tanpa watermark · Cepat · Gratis",
     input_placeholder: "Tempel tautan TikTok di sini...",
     download_btn: "Unduh Video",
+    desc_h2: "Mengapa Anda mengunduh video & foto TikTok dengan TikTok Save?",
+    desc_p1:
+      "Karena dengan TikTok Save memungkinkan Anda mengunduh video dari TikTok tanpa logo, tanpa watermark. Simpan dan unduh video TikTok di peramban web, tidak perlu menginstal perangkat lunak atau ekstensi apa pun.",
+    desc_p2:
+      "TikTok Save Downloader tidak menyimpan video, juga tidak menyimpan salinan video yang telah diunduh. Semua video tersimpan di server TikTok. Selain itu, alat ini tidak mengumpulkan data atau melacak riwayat unduhan pengguna. Itulah mengapa menggunakan Save TikTok sepenuhnya anonim.",
+    desc_p3:
+      "Dengan TikTok Save, alat ini akan membantu Anda mengunduh setiap gambar atau video TikTok ke perangkat Anda dengan mudah dan cepat. Kami akan terus meningkatkan perangkat lunak untuk memberikan pengalaman pengguna terbaik! Silakan bagikan alat ini dengan teman dan kerabat untuk digunakan. Terima kasih!",
     fitur_h2: "Kenapa Pilih Kami?",
     fitur_1_title: "Super Cepat",
     fitur_1_desc: "Proses unduh hanya hitungan detik tanpa antre.",
@@ -21,8 +28,8 @@ const i18n = {
     cara_1_d: "Ketuk Bagikan → Salin Tautan.",
     cara_2_t: "Tempel Tautan",
     cara_2_d: "Kembali ke situs ini, paste di kotak input.",
-    cara_3_t: "Klik Unduh",
-    cara_3_d: "Tunggu 2 detik, video akan terunduh otomatis.",
+    cara_3_t: "Pilih Resolusi & Unduh",
+    cara_3_d: "Pilih 720p/1080p lalu klik Unduh.",
     faq_h2: "Pertanyaan Umum",
     faq_1_q: "Apakah harus bayar?",
     faq_1_a: "100 % gratis, tidak ada batasan jumlah unduhan.",
@@ -42,9 +49,16 @@ const i18n = {
     nav_howto: "How to Use",
     nav_faq: "FAQ",
     hero_h1: "TikTok Save by Ivan",
-    hero_sub: "No watermark • Fast • Free",
+    hero_sub: "No watermark · Fast · Free",
     input_placeholder: "Paste TikTok link here...",
     download_btn: "Download Video",
+    desc_h2: "Why download TikTok videos & photos with TikTok Save?",
+    desc_p1:
+      "TikTok Save lets you download TikTok videos without logo, without watermark. Save and download TikTok videos in your browser – no software or extension required.",
+    desc_p2:
+      "TikTok Save Downloader does not store videos, nor keep copies of downloaded videos. All videos stay on TikTok servers. Besides, the tool neither collects data nor tracks user download history. Hence, Save TikTok is completely anonymous.",
+    desc_p3:
+      "With TikTok Save we help you download any TikTok image or video to your device quickly and easily. We keep improving the software to give you the best experience! Please share this tool with friends and relatives. Thank you!",
     fitur_h2: "Why Choose Us?",
     fitur_1_title: "Super Fast",
     fitur_1_desc: "Download finished in seconds, no queue.",
@@ -57,8 +71,8 @@ const i18n = {
     cara_1_d: "Tap Share → Copy Link.",
     cara_2_t: "Paste Link",
     cara_2_d: "Come back here, paste into the input box.",
-    cara_3_t: "Click Download",
-    cara_3_d: "Wait 2 seconds, video will be saved automatically.",
+    cara_3_t: "Choose Quality & Download",
+    cara_3_d: "Pick 720p/1080p then click Download.",
     faq_h2: "Frequently Asked",
     faq_1_q: "Is it free?",
     faq_1_a: "100 % free, no download limit.",
@@ -74,7 +88,7 @@ const i18n = {
   },
 };
 
-/* ======== bahasa & section switch ======== */
+/* ---------- bahasa ---------- */
 let currentLang = "id";
 function applyLang(lang) {
   currentLang = lang;
@@ -94,20 +108,19 @@ document.querySelectorAll(".lang-switch button").forEach((btn) => {
   btn.addEventListener("click", () => applyLang(btn.dataset.lang));
 });
 
-/* ---------- section navigation ---------- */
-const sectionBtns = document.querySelectorAll("[data-section]");
-const sections = document.querySelectorAll(".section");
-function goToSection(id) {
-  sections.forEach((s) => s.classList.toggle("active", s.id === id));
-  sectionBtns.forEach((b) => b.classList.toggle("active", b.dataset.section === id));
-}
-sectionBtns.forEach((btn) => {
-  btn.addEventListener("click", () => goToSection(btn.dataset.section));
-});
-
-/* ---------- sticky topbar solid on scroll ---------- */
+/* ---------- navbar scroll spy ---------- */
+const sections = document.querySelectorAll("section[id]");
+const navLinks = document.querySelectorAll(".nav-link");
 window.addEventListener("scroll", () => {
-  document.getElementById("topbar").classList.toggle("solid", window.scrollY > 60);
+  let cur = "";
+  sections.forEach((sec) => {
+    const top = sec.offsetTop - 100;
+    if (scrollY >= top) cur = sec.getAttribute("id");
+  });
+  navLinks.forEach((link) => {
+    link.classList.toggle("active", link.getAttribute("href") === "#" + cur);
+  });
+  document.getElementById("navbar").classList.toggle("solid", window.scrollY > 60);
 });
 
 /* ---------- accordion ---------- */
@@ -119,18 +132,33 @@ document.querySelectorAll(".ask").forEach((btn) => {
   });
 });
 
-/* ---------- downloader (tiktok) ---------- */
+/* ---------- downloader + baca resolusi ---------- */
 document.getElementById("download-btn").addEventListener("click", async () => {
   const url = document.getElementById("input-url").value.trim();
+  const res = document.querySelector('input[name="res"]:checked').value; // 720 atau 1080
   const status = document.getElementById("status");
   if (!url) return (status.textContent = "Masukkan tautan dulu / Please enter a link");
   status.textContent = i18n[currentLang].status_processing;
   try {
-    const res = await fetch("https://www.tikwm.com/api/", {
+    const resApi = await fetch("https://www.tikwm.com/api/", {
       method: "POST",
       headers: { "content-type": "application/x-www-form-urlencoded; charset=UTF-8" },
-      body: `url=${encodeURIComponent(url)}&hd=1`,
+      body: `url=${encodeURIComponent(url)}&hd=${res}`,
     });
-    const data = await res.json();
+    const data = await resApi.json();
     if (data.data && data.data.play) {
-      status.textContent = i18n[currentLang].status_downloading
+      status.textContent = i18n[currentLang].status_downloading;
+      window.open(data.data.play, "_blank");
+    } else {
+      status.textContent = i18n[currentLang].status_failed;
+    }
+  } catch {
+    status.textContent = i18n[currentLang].status_error;
+  }
+});
+
+/* footer tahun */
+document.getElementById("thn").textContent = new Date().getFullYear();
+
+/* init */
+applyLang(currentLang);
