@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TikTok Save by Ivan</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- ---------- STICKY TOPBAR ---------- -->
+  <header class="topbar" id="topbar">
+    <div class="logo">TikTok Save <span>by Ivan</span></div>
+    <div class="topbar-right">
+      <nav class="tabs">
+        <button data-section="hero" class="active" data-text="nav_downloader">Downloader</button>
+        <button data-section="fitur" data-text="nav_fitur">Fitur</button>
+        <button data-section="cara" data-text="nav_howto">Cara Pakai</button>
+        <button data-section="faq" data-text="nav_faq">FAQ</button>
+      </nav>
+      <div class="lang-switch">
+        <button data-lang="id" class="active">ID</button>
+        <button data-lang="en">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ---------- HERO SECTION (DOWNLOADER) ---------- -->
+  <section id="hero" class="section active">
+    <div class="container hero-inner">
+      <h1 data-text="hero_h1">TikTok Save by Ivan</h1>
+      <p class="sub" data-text="hero_sub">Tanpa watermark • Cepat • Gratis</p>
+      <input id="input-url" type="text" data-placeholder="input_placeholder" placeholder="Tempel tautan TikTok di sini...">
+      <button id="download-btn" data-text="download_btn">Unduh Video</button>
+      <p id="status"></p>
+    </div>
+  </section>
+
+  <!-- ---------- FITUR ---------- -->
+  <section id="fitur" class="section">
+    <div class="container">
+      <h2 data-text="fitur_h2">Kenapa Pilih Kami?</h2>
+      <div class="grid-3">
+        <div class="card">
+          <div class="icon">🏃</div>
+          <h3 data-text="fitur_1_title">Super Cepat</h3>
+          <p data-text="fitur_1_desc">Proses unduh hanya hitungan detik tanpa antre.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🛡️</div>
+          <h3 data-text="fitur_2_title">Aman & Privasi</h3>
+          <p data-text="fitur_2_desc">Tidak perlu login, tidak menyimpan data Anda.</p>
+        </div>
+        <div class="card">
+          <div class="icon">📱</div>
+          <h3 data-text="fitur_3_title">Semua Perangkat</h3>
+          <p data-text="fitur_3_desc">Bisa dipakai di HP, tablet, PC, atau browser mana pun.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- CARA PAKAI ---------- -->
+  <section id="cara" class="section">
+    <div class="container">
+      <h2 data-text="cara_h2">Cara Pakai</h2>
+      <div class="timeline">
+        <div class="step">
+          <span class="num">1</span>
+          <p><strong data-text="cara_1_t">Buka TikTok</strong> – <span data-text="cara_1_d">Ketuk Bagikan → Salin Tautan.</span></p>
+        </div>
+        <div class="step">
+          <span class="num">2</span>
+          <p><strong data-text="cara_2_t">Tempel Tautan</strong> – <span data-text="cara_2_d">Kembali ke situs ini, paste di kotak input.</span></p>
+        </div>
+        <div class="step">
+          <span class="num">3</span>
+          <p><strong data-text="cara_3_t">Klik Unduh</strong> – <span data-text="cara_3_d">Tunggu 2 detik, video akan terunduh otomatis.</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- FAQ ---------- -->
+  <section id="faq" class="section">
+    <div class="container">
+      <h2 data-text="faq_h2">Pertanyaan Umum</h2>
+      <div class="accordion">
+        <div class="item">
+          <button class="ask" data-text="faq_1_q">Apakah harus bayar?</button>
+          <div class="ans"><p data-text="faq_1_a">100 % gratis, tidak ada batasan jumlah unduhan.</p></div>
+        </div>
+        <div class="item">
+          <button class="ask" data-text="faq_2_q">Apakah aman untuk HP saya?</button>
+          <div class="ans"><p data-text="faq_2_a">Ya, tidak perlu instal apapun, cuma pakai browser.</p></div>
+        </div>
+        <div class="item">
+          <button class="ask" data-text="faq_3_q">Bisa unduh MP3 juga?</button>
+          <div class="ans"><p data-text="faq_3_a">Sekarang hanya video MP4; fitur MP3 akan menyusul.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- FOOTER ---------- -->
+  <footer>
+    <p>TikTok Save by Ivan © <span id="thn">2025</span></p>
+    <p data-text="footer_note">Tidak berafiliasi dengan TikTok / Bytedance.</p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
